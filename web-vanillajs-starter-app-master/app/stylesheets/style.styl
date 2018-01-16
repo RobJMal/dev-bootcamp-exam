@@ -1,10 +1,87 @@
 @require "helpers"
 
+text-color = #000 
+mobile-width = 600px
+
+body
+  margin 0
+  padding 0
+  font-family consolas
+  // text-align: center
+  // background-image url(/img/widener.jpg) 
+  // background-size cover
+    
+#navbar
+  position relative 
+  margin-bottom 50px
+  top 0
+  left 0
+  width calc(100% - 40px)
+  padding 20px
+  background crimson
+  
+#navbar span
+  color white
+  font-size 2em
+  text-transform uppercase
+  font-family Lobster
+
+#nb-items
+  float right
+#nb-items *
+  padding-left 20px
+
+// TABLE doesn't work
+.table 
+   margin-left: auto
+   margin-right: auto 
+   text-align: center
+   vertical-align: middle
+
+// FORM
+
+.form-box
+  position relative
+  width 40%
+  margin 0px 30%
+  box-shadow 0px 0px 25px #CCC
+  padding 30px
+  background-color white
+
+.fb-item
+  margin-bottom 10px
+.fb-item input
+  padding: 12px 10px
+  width 100%
+  font-size 1.2em
+  border none
+  border-bottom 1px solid
+  border-color crimson
+  // transition: ease-in-out, width .35s ease-in-out
+.fb-item input:focus //something wrong here
+    outline none  
+  border-left-style solid
+#submit
+  bottom 0 
+  left 0 
+  width 100%
+  background crimson
+  padding 10px
+  text-align center
+  color white
+  font-size 1.4em
+  text-transform upper
+  border none
+#submit:hover
+  opacity 0.8
+  cursor pointer
+  
+//ERROR MESSAGE & MODAL STYLING
 .error-message
     visibility hidden
-    color red
+    color crimson
     font-weight bold
-    text-align left
+    text-align center
     padding 1rem 0
 .modal
     display none

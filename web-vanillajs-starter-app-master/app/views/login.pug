@@ -1,0 +1,18 @@
+extends template
+
+block content
+    h1 login.pug 
+    h2 this page is meant for admin to login and should redirect to a page where they can modify questions
+
+    form          
+        .form-box
+            h2 Admin Login
+            .fb-item
+                span 
+                br
+                input(type='email' name='email' placeholder='Email') 
+            .fb-item
+                span 
+                br
+                input(type='password' name='password' placeholder='Password') 
+            button#log(type='button' onclick='login()') Login

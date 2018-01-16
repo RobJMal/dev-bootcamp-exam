@@ -1,10 +1,23 @@
 doctype html
 html
   head
-    title= title || "CHANGE TITLE IN TEMPLATE.PUG"
+    title= title || "DEV BOOTCAMP EXAM"
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', type='text/css' href='//fonts.googleapis.com/css?family=Lobster')
     script(src='/js/fetch.js')
-  body
+
+#navbar
+    span DEV Bootcamp Quiz!
+    #nb-items
+        a(href='/')
+            span The Quiz
+        a(href='/results')
+            span All Results
+        a(href='/login')
+            span Admin Login
+        #nb-profpic
+  
+body
     block content
     script(src='/js/script.min.js')
     if token
