@@ -4,6 +4,8 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+models/mongod.conf
+start_server.bat
 
 # Runtime data
 pids
