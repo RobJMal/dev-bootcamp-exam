@@ -17,9 +17,6 @@ router.route('/user')
   .put(auth.validateUser, users.updateUser)
   .delete(auth.validateUser, users.deleteUser)
 
-
-
-
 /*
 * Auth Routes
 */
