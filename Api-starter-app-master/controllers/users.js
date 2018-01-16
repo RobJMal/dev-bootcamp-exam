@@ -1,4 +1,4 @@
-const User = require('../models/schemas/user');
+const User = require('../models/schemas/users');
 const config = require('../models/config');
 const jwt = require('jwt-simple')
 
@@ -10,18 +10,18 @@ exports.createUser = (req, res, next) => {
     const userData = {};
     // validate email
     // http://emailregex.com
-    if (req.body.email) {
-        if (!(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(req.body.email)))
+    if (req.body.newEmail) {
+        if (!(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(req.body.newEmail)))
             return res.status(400).send('Invalid email');
         else
-            userData.email = req.body.email;
+            userData.email = req.body.newEmail;
     }
 
     // check if password was provided
-    if (req.body.password)
-        userData.hash = req.body.password;
-    if (req.body.hash)
-        userData.hash = req.body.hash;
+    if (req.body.newPass)
+        userData.hash = req.body.newPass;
+    if (req.body.newHash)
+        userData.hash = req.body.newHash;
 
     // create new user
     const newUser = new User(userData);
@@ -52,7 +52,7 @@ exports.createUser = (req, res, next) => {
     });
 };
 
-exports.getAllUsers = (req, res, next) => {
+exports.getAllUser = (req, res, next) => {
     User.find({}).then(users => res.json(users)).catch(next);
 }
 

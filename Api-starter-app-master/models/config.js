@@ -4,4 +4,8 @@ module.exports = {
 
     // secret for creating tokens
     token_secret: process.env.TOKEN_SECRET || 'reughdjsasdkpmasipkmsdfadf',
+
+    // inital admin
+    initAddress: 'ab@cd.ef',
+    initPassword: '123'
 };
