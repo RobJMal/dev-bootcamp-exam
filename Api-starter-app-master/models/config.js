@@ -57,7 +57,7 @@ module.exports = {
           mms: '@vmpix.com',
           longName: 'Virgin Mobile'
       }
-  ]
+  ],
     // inital admin
     initAddress: 'ab@cd.ef',
     initPassword: '123'
