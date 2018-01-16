@@ -1,4 +1,4 @@
-const User = require('../models/schemas/user');
+const User = require('../models/schemas/users');
 const jwt = require('jwt-simple');
 const config = require('../models/config');
 
@@ -34,6 +34,11 @@ exports.loginUser = (req, res, next) => {
 
 exports.validateUser = (req, res, next) => {
     validateToken(req, res, next, {});
+};
+
+exports.userRequired = (req, res, next) => {
+  console.log('Entered User Required')
+  validateToken(req, res, next, { userRequired: true })
 };
 
 function validateToken(req, res, next, c) {
