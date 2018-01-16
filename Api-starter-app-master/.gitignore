@@ -1,3 +1,5 @@
+models/mongod.conf
+
 # Logs
 logs
 *.log

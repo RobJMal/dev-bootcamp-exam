@@ -7,14 +7,15 @@ const auth = require('../controllers/auth')
 const users = require('../controllers/users')
 const send = require('../controllers/send')
 
+
 /*
 * User Routes
 */
-router.route('/users')
-  .post(users.createUser)
-  .get(auth.validateUser, users.getUserById)
-  .put(auth.validateUser, users.updateUser)
-  .delete(auth.validateUser, users.deleteUser)
+router.route('/user')
+  .post(auth.validateUser, user.createUser)
+  .get(auth.validateUser, user.getUserById)
+  .put(auth.validateUser, user.updateUser)
+  .delete(auth.validateUser, user.deleteUser)
 
 
 

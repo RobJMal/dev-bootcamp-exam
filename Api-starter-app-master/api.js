@@ -9,6 +9,8 @@ const bodyParser = require('body-parser');
 const config = require('./models/config');
 const routes = require('./routes/routes');
 
+const init = require('./init');
+
 // http://mongoosejs.com/docs/promises.html
 mongoose.Promise = global.Promise;
 mongoose.connect(config.dbUrl, {server: {socketOptions: {keepAlive: 120}}});

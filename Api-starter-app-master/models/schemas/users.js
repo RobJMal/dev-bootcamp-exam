@@ -39,6 +39,7 @@ userSchema.methods.comparePassword = function(pw, callback) {
         callback(null, isMatch);
     });
 };
+
 userSchema.methods.comparePasswordSync = function(pw) {
     return bcrypt.compareSync(pw, this.hash);
 };

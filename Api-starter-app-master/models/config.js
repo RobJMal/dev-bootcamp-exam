@@ -58,4 +58,7 @@ module.exports = {
           longName: 'Virgin Mobile'
       }
   ]
+    // inital admin
+    initAddress: 'ab@cd.ef',
+    initPassword: '123'
 };
