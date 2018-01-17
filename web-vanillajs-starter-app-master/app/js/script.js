@@ -20,7 +20,36 @@ function submitUser() {
     method: 'POST',
     body: JSON.stringify(data)
   }).then(submitSuccess)
+  .then(window.location = '/welcome')
   .catch(submitError)
+}
+
+function createQuestion() {
+  console.log(form.prompt.value)
+  var data = {}
+  if (form.prompt.value) data.prompt = form.prompt.value
+  if (form.)
+
+  fetch('/makeQuestion', {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify(data)
+  }).then(function(res) {
+    if (!res.ok) {
+      res.text()
+      .then(function(message) {
+        alert(message)
+      })
+    }
+    res.json()
+    .then(function(user) {
+      window.location = '/question'
+    })
+  }).catch(function(err) {
+    console.error(err)
+  })
 
 }
 
