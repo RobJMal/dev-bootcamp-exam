@@ -1,5 +1,29 @@
 const form = document.forms[0]
 
+function login() {
+  console.log("entered function 1")
+  var data = {
+    email: form.email.value,
+    password: form.password.value
+  }
+  fetch('/login', {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify(data)
+  }).then(function(res) {
+    if (!res.ok) { alert('ERROR') }
+    console.log("entered function 1")
+    res.json()
+    .then(function(data) {
+      alert(JSON.stringify(data))
+      localStorage.token = data.token
+      window.location = '/'
+    })
+  })
+}
+
 /*=============================================
 =            Form Submit Functions            =
 =============================================*/
