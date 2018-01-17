@@ -5,6 +5,7 @@ const router = express.Router();
 
 const auth = require('../controllers/auth')
 const users = require('../controllers/users')
+const questions = require('../controllers/questions')
 
 
 /*
@@ -21,6 +22,10 @@ router.route('/users')
 */
 router.route('/auth/login')
   .post(auth.loginUser);
+
+router.route('/question')
+  .post(questions.createQuestion)
+  .get(questions.getAllQuestions)
 
 // expose routes through router object
 module.exports = router;
