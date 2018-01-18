@@ -10,6 +10,14 @@ const send = require('../controllers/send')
 const result = require('../controllers/result')
 
 /*
+* Kevin's Routes
+*/
+router.route('/question/:questionId/id')
+  .get(questions.getQuestionById)
+router.route('/question/:order/order')
+  .get(questions.getQuestionByOrder)
+
+/*
 * User Routes
 */
 router.route('/user')

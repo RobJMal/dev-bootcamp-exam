@@ -1,5 +1,16 @@
 const form = document.forms[0]
 
+function startQuiz() {
+  window.location = '/question/0/order'
+}
+
+function nextQuestion(order, count) {
+  order += 1
+  //ASK GABIN HOW SHE WANTS COUNT HANDED OVER
+  // console.log("count: " + count)
+  window.location = '/question/' + order + '/order'
+}
+
 function login() {
   console.log("entered function 1")
   var data = {
@@ -44,38 +55,39 @@ function submitUser() {
     method: 'POST',
     body: JSON.stringify(data)
   }).then(submitSuccess)
-  .then(window.location = '/welcome')
+  .then(window.location = '/') //was /welcome before
   .catch(submitError)
 }
 
-function createQuestion() {
-  console.log(form.prompt.value)
-  var data = {}
-  if (form.prompt.value) data.prompt = form.prompt.value
-  if (form.)
+////Joon made this?
+// function createQuestion() {
+//   console.log(form.prompt.value)
+//   var data = {}
+//   if (form.prompt.value) data.prompt = form.prompt.value
+//   if (form.)
 
-  fetch('/makeQuestion', {
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    method: 'POST',
-    body: JSON.stringify(data)
-  }).then(function(res) {
-    if (!res.ok) {
-      res.text()
-      .then(function(message) {
-        alert(message)
-      })
-    }
-    res.json()
-    .then(function(user) {
-      window.location = '/question'
-    })
-  }).catch(function(err) {
-    console.error(err)
-  })
+//   fetch('/makeQuestion', {
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     method: 'POST',
+//     body: JSON.stringify(data)
+//   }).then(function(res) {
+//     if (!res.ok) {
+//       res.text()
+//       .then(function(message) {
+//         alert(message)
+//       })
+//     }
+//     res.json()
+//     .then(function(user) {
+//       window.location = '/question'
+//     })
+//   }).catch(function(err) {
+//     console.error(err)
+//   })
 
-}
+// }
 
 /*=============================================
 =            Form Submit Callbacks            =
