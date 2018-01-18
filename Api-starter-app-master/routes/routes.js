@@ -6,18 +6,16 @@ const router = express.Router();
 const auth = require('../controllers/auth')
 const users = require('../controllers/users')
 const send = require('../controllers/send')
-
+const result = require('../controllers/result')
 
 /*
 * User Routes
 */
 router.route('/user')
   .post(auth.validateUser, users.createUser)
-  .get(auth.validateUser, users.getUserById)
-  .put(auth.validateUser, users.updateUser)
+  // .get(auth.validateUser, users.getUserById)
+  // .put(auth.validateUser, users.updateUser)
   .delete(auth.validateUser, users.deleteUser)
-
-
 
 
 /*
@@ -38,6 +36,17 @@ router.route('/results/sendText')
 router.route('/results/sendEmail')
 	.post(send.sendUserEmail)
 
+/*
+* Result Routes
+*/
+router.route('/result')
+  .post(result.pushResult)
+  .get(result.getBreakDown)
+//   .delete(result.deleteAllResults)
+
+
+// router.route('/test')
+//   .get(result.getAllResults)
 
 // expose routes through router object
 module.exports = router;
