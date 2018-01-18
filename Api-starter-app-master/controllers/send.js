@@ -26,6 +26,9 @@ function getProviderDomain(provider) {
 
 // Sends user text message of results 
 exports.sendUserTextMessage = (req, res, next) => {
+	console.log("********************************8")
+	console.log(req.body)
+	console.log("********************************8")
 	
 	let phoneNumber = req.body.phoneNumber
 

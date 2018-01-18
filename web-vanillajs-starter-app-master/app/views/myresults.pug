@@ -1,0 +1,75 @@
+extends template
+
+block content 
+	h1 This place displays the result 
+
+	h2#result Luna
+
+	form 
+
+		span Result
+		br
+		input(type='text' name='result' placeholder='Results')
+
+		br
+
+		//- Sends results via email 
+		span Email
+		br
+		input(type='text' name='email' placeholder='Email')
+
+		button#submit(type='button' onclick='submitResultsToEmail()') Submit
+
+		//- For sending results via text 
+		span Phone Number
+		br 
+		input(type='phone' name='phoneNumber' placeholder='Phone Number')
+
+		br
+
+		span Phone Provider
+		br
+		input(type='text' name='phoneProvider' placeholder='Phone Provider')
+
+		button#submit(type='button' onclick='submitResultsToText()') Submit
+
+	//- Button for sending results via email 
+
+
+	//- Button for sening results via text 
+
+
+	//- Buttons for sharing on social media 
+	#fb-root
+	script.
+		(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11';
+		fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	
+	//- Button that enables user to share results
+	//- Doesn't make it share results directly.  HOW TO RESOLVE THIS?  
+	iframe(src='https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=large&mobile_iframe=true&width=106&height=28&appId', width='106', height='28', style='border:none;overflow:hidden', scrolling='no', frameborder='0', allowtransparency='true')
+
+	script.
+		window.twttr = (function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0],
+		t = window.twttr || {};
+		if (d.getElementById(id)) return t;
+		js = d.createElement(s);
+		js.id = id;
+		js.src = "https://platform.twitter.com/widgets.js";
+		fjs.parentNode.insertBefore(js, fjs);
+		t._e = [];
+		t.ready = function(f) {
+		t._e.push(f);
+		};
+		return t;
+		}(document, "script", "twitter-wjs"));
+	a.twitter-share-button(href='https://twitter.com/intent/tweet?text=Hello%20world', data-size='large')
+		| Tweet
+
+	
