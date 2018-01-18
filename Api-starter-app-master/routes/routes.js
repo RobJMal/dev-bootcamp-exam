@@ -54,10 +54,10 @@ router.route('/result')
 router.route('/answer')
   .post(answer.pushAnswer)
   .get(answer.getBreakDown)
-  .delete(answer.deleteAllAnswers)
+  // .delete(answer.deleteAllAnswers)
 
-router.route('/test')
-  .get(answer.getAllAnswers)
+// router.route('/test')
+//   .get(answer.getAllAnswers)
 
 
 // expose routes through router object

@@ -3,12 +3,10 @@ const Schema = mongoose.Schema;
 
 var answerSchema = new Schema({
    id: Number,
-   choice: [Number]
+   choice: Number
 });
 
 answerSchema.pre('save', function(callback) {
-    if (!this.id || !this.choice)
-        return callback(new Error('Missing answer'));
     callback();
 });
 
