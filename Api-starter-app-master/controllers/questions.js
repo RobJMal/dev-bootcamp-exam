@@ -23,7 +23,6 @@ exports.getAllQuestions = (req, res, next) => {
     Question.find({}).then(questions => res.json(questions)).catch(next);
 }
 
-
 exports.getQuestionById = (req, res, next) => {
     Question.findById(req.body.id).then(question => {
         if (!question) return res.status(404).send('Could not find question: invalid id');
