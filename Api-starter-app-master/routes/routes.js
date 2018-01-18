@@ -5,6 +5,7 @@ const router = express.Router();
 
 const auth = require('../controllers/auth')
 const users = require('../controllers/users')
+const questions = require('../controllers/questions')
 const send = require('../controllers/send')
 const result = require('../controllers/result')
 
@@ -17,13 +18,15 @@ router.route('/user')
   // .put(auth.validateUser, users.updateUser)
   .delete(auth.validateUser, users.deleteUser)
 
-
 /*
 * Auth Routes
 */
 router.route('/auth/login')
   .post(auth.loginUser);
 
+router.route('/question')
+  .post(questions.createQuestion)
+  .get(questions.getAllQuestions)
 
 /*
 * Send Routes
