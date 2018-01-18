@@ -29,7 +29,6 @@ exports.getAllQuestions = (req, res, next) => {
     Question.find({}).then(questions => res.json(questions)).catch(next);
 }
 
-//noah
 exports.getQuestionById = (req, res, next) => {
     Question.findById(req.params.questionId).then(question => {
         if (!question) return res.status(404).send('Could not find question: invalid id');

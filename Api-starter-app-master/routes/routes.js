@@ -8,6 +8,7 @@ const users = require('../controllers/users')
 const questions = require('../controllers/questions')
 const send = require('../controllers/send')
 const result = require('../controllers/result')
+const answer = require('../controllers/answer')
 
 /*
 * Kevin's Routes
@@ -55,9 +56,17 @@ router.route('/result')
   .get(result.getBreakDown)
 //   .delete(result.deleteAllResults)
 
+/*
+* Answer Routes
+*/
+router.route('/answer')
+  .post(answer.pushAnswer)
+  .get(answer.getBreakDown)
+  // .delete(answer.deleteAllAnswers)
 
 // router.route('/test')
-//   .get(result.getAllResults)
+//   .get(answer.getAllAnswers)
+
 
 // expose routes through router object
 module.exports = router;

@@ -128,3 +128,60 @@ function displayError(message) {
     errorDiv.innerHTML = message;
     errorDiv.style.visibility = 'visible';
 }
+
+
+/*=============================================
+=      Form Submit Results (text, email)     =
+=============================================*/
+function submitResultsToEmail(){
+  var resultAndEmail = {}
+
+  if (form.result.value) resultAndEmail.result = form.result.value
+  if (form.email.value) resultAndEmail.email = form.email.value 
+
+  console.log(resultAndEmail)
+
+  fetch('/myresults/email', {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify(resultAndEmail)
+  }).then(function(res) {
+    res.json()
+    .then(function(user) {
+      alert(JSON.stringify(user))
+    })
+  }).catch(function(argument) {
+    console.error(err)
+  })
+}
+
+
+function submitResultsToText() {
+  var resultsAndPhoneInfo = {}
+
+  if (form.result.value) resultsAndPhoneInfo.result = form.result.value 
+  if (form.phoneNumber.value) resultsAndPhoneInfo.phoneNumber = form.phoneNumber.value
+  if (form.phoneProvider.value) resultsAndPhoneInfo.phoneProvider = form.phoneProvider.value
+
+  console.log(resultsAndPhoneInfo)
+
+  fetch('/myresults/phone', {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify(resultsAndPhoneInfo)
+  }).then(function(res) {
+    res.json()
+    .then(function(user) {
+      alert(JSON.stringify(user))
+    })
+  }).catch(function(argument) {
+    console.error(err)
+  })
+}
+
+
+// document.getElementById('result').innerHTML
