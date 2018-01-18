@@ -52,23 +52,23 @@ exports.createUser = (req, res, next) => {
     });
 };
 
-exports.getAllUser = (req, res, next) => {
-    User.find({}).then(users => res.json(users)).catch(next);
-}
+// exports.getAllUser = (req, res, next) => {
+//     User.find({}).then(users => res.json(users)).catch(next);
+// }
 
-exports.getUserById = (req, res, next) => {
-    User.findById(req.body.id).then(user => {
-        if (!user) return res.status(404).send('Could not find user: invalid id');
-        return res.json(user)
-    }).catch(next);
-};
+// exports.getUserById = (req, res, next) => {
+//     User.findById(req.body.id).then(user => {
+//         if (!user) return res.status(404).send('Could not find user: invalid id');
+//         return res.json(user)
+//     }).catch(next);
+// };
 
-exports.updateUser = (req, res, next) => {
-    User.findOneAndUpdate(req.body.id, req.body).then(user => {
-        if (!user) return res.status(404).send('No user with that ID');
-        return res.sendStatus(200);
-    }).catch(next);
-};
+// exports.updateUser = (req, res, next) => {
+//     User.findOneAndUpdate(req.body.id, req.body).then(user => {
+//         if (!user) return res.status(404).send('No user with that ID');
+//         return res.sendStatus(200);
+//     }).catch(next);
+// };
 
 exports.deleteUser = (req, res, next) => {
     User.findByIdAndRemove(req.body.id)
