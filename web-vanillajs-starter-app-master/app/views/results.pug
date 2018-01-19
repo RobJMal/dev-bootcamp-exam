@@ -5,7 +5,8 @@ block content
       head
         script(src='/js/Chart.js')
       body
-        canvas#canvas1(width='400', height='400')
+        canvas#canvas1(width='100', height='100')
+        canvas#canvas2(width='100', height='100')
 
         script.
             var chrt1 = document.getElementById("canvas1").getContext("2d");
@@ -23,7 +24,7 @@ block content
                   borderColor: "rgba(220,220,220,0.8)",
                   hoverBackgroundColor: "rgba(73, 46, 46, 1)",
                   hoverBorderColor: "rgba(220,220,220,1)",
-                  data: [#{total}]
+                  data: [11, 24, 16, 27, 22]
                 }],
             };
             var options = {
@@ -38,5 +39,45 @@ block content
             var totalChart = new Chart(chrt1, {
                type: 'pie',
                data: data,
+               options: options
+            });
+
+            var chrt2 = document.getElementById("canvas2").getContext("2d");
+            var qdata = {
+               labels: ["Choice 1", "Choice 2", "Choice 3", "Choice 4", "Choice 5"],
+               datasets: [{
+                  label: null,
+                  backgroundColor: [
+                    "rgba(252, 209, 214, 1)",
+                    "rgba(224, 60, 60, 1)",
+                    "rgba(160, 64, 78, 1)",
+                    "rgba(142, 14, 24, 1)",
+                    "rgba(188, 94, 102, 1)"
+                  ],
+                  borderColor: "rgba(220,220,220,0.8)",
+                  hoverBackgroundColor: "rgba(73, 46, 46, 1)",
+                  hoverBorderColor: "rgba(220,220,220,1)",
+                  data: [30, 20, 10, 25, 20]
+                }],
+            };
+            var options = {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: "Total Result for Question 4"
+                },
+                scales: {
+                	yAxes:[{
+                		ticks: {
+                			beginAtZero: true
+                		}
+                	}]
+                }
+            };
+            var qChart = new Chart(chrt2, {
+               type: 'bar',
+               data: qdata,
                options: options
             });

@@ -240,7 +240,7 @@ function submitResultsToEmail(){
   }).then(function(res) {
     res.json()
     .then(function(user) {
-      alert(JSON.stringify(user))
+      // alert(JSON.stringify(user))
     })
   }).catch(function(argument) {
     console.error(err)
@@ -266,7 +266,7 @@ function submitResultsToText() {
   }).then(function(res) {
     res.json()
     .then(function(user) {
-      alert(JSON.stringify(user))
+      // alert(JSON.stringify(user))
     })
   }).catch(function(argument) {
     console.error(err)
