@@ -26,7 +26,8 @@ exports.deleteAllAnswers = (req, res, next) => {
 };
 
 exports.getBreakDown = (req, res, next) => {
-    Answer.aggregate([
+    var ans;
+    Answer.aggregate(
         { "$group": {
             "_id": {
                 "id": "$id",
@@ -38,12 +39,12 @@ exports.getBreakDown = (req, res, next) => {
             "_id": "$_id.id",
             "choice": { 
                 "$push": { 
-                    "answer choice": "$_id.choice",
+                    "choiceNo": "$_id.choice",
                     "count": "$choiceCount"
                 },
             },
             "count": { "$sum": "$choiceCount" }
         }},
         { "$sort": { "_id": 1 } }
-    ]).then(answers => res.json(answers)).catch(next);
+    ).then(answers => res.json({answers})).catch(next);
 };
