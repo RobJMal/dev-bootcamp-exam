@@ -18,8 +18,43 @@ router.post('/makeQuestion', (req, res, next) => {
 	}).pipe(res)
 })
 
-router.get('/question', (req, res, next) => {
-	return res.render('question')
+//noah - by questionId
+router.get('/question/:questionId/questionId', (req, res, next) => {
+  request.get({
+    url: config.apiUrl + '/question/' + req.params.questionId + '/id'
+  }, (err, response, body) => {
+    body = JSON.parse(body)
+    console.log(body)
+    if (err) return next(err)
+    // if not 200 reponse, body is error string
+    if (typeof body === 'string') {
+      return next(new Error(body))
+    }
+    return res.render('question', {
+      prompt: body.prompt,
+      answers: body.answers
+    })
+  })
+})
+
+//kevin - by order
+router.get('/question/:order/order', (req, res, next) => {
+  request.get({
+    url: config.apiUrl + '/question/' + req.params.order + '/order'
+  }, (err, response, body) => {
+    body = JSON.parse(body)
+    console.log(body)
+    if (err) return next(err)
+    // if not 200 reponse, body is error string
+    if (typeof body === 'string') {
+      return next(new Error(body))
+    }
+    return res.render('question', {
+      prompt: body.prompt,
+      answers: body.answers,
+      order: body.order
+    })
+  })
 })
 
 router.get('/results', (req, res, next) => {
@@ -30,6 +65,7 @@ router.get('/login', (req, res, next) => {
     return res.render('login');
 });
 
+
 // Loads my result page 
 router.get('/myresults', (req, res, next) => {
   return res.render('myresults')
@@ -38,6 +74,7 @@ router.get('/myresults', (req, res, next) => {
 // Sends result via email
 router.post('/myresults/email', (req, res, next) => {
   console.log(req.body)
+
   request.post({
     url: config.apiUrl + '/results/sendEmail',
     form: req.body
@@ -52,7 +89,6 @@ router.post('/myresults/phone', (req, res, next) => {
     form: req.body
   }).pipe(res)
 })
-
 
 router.post('/login', (req, res, next) => {
   request.post({

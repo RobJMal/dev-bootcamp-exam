@@ -5,10 +5,20 @@ const router = express.Router();
 
 const auth = require('../controllers/auth')
 const users = require('../controllers/users')
+
 const questions = require('../controllers/questions')
 const send = require('../controllers/send')
 const result = require('../controllers/result')
 const answer = require('../controllers/answer')
+
+/*
+* Kevin's Routes
+*/
+router.route('/question/:questionId/id')
+  .get(questions.getQuestionById)
+router.route('/question/:order/order')
+  .get(questions.getQuestionByOrder)
+
 
 /*
 * User Routes
@@ -26,8 +36,9 @@ router.route('/auth/login')
   .post(auth.loginUser);
 
 router.route('/question')
-  .post(questions.createQuestion)
+  .post(questions.makeQuestion)
   .get(questions.getAllQuestions)
+
 
 /*
 * Send Routes
@@ -58,7 +69,6 @@ router.route('/answer')
 
 // router.route('/test')
 //   .get(answer.getAllAnswers)
-
 
 // expose routes through router object
 module.exports = router;

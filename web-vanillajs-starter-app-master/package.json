@@ -5,10 +5,11 @@
   "private": true,
   "scripts": {
     "build": "npm install && grunt publish",
-    "dev": "START grunt & nodemon app.js"
+    "dev": "grunt & nodemon app.js"
   },
   "dependencies": {
     "body-parser": "^1.13.3",
+    "chart.js": "^2.7.1",
     "cookie-parser": "~1.3.5",
     "express": "^4.13.4",
     "jwt-simple": "^0.5.1",

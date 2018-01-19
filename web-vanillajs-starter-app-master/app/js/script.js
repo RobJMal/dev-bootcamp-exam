@@ -1,5 +1,16 @@
 const form = document.forms[0]
 
+function startQuiz() {
+  window.location = '/question/0/order'
+}
+
+function nextQuestion(order, count) {
+  order += 1
+  //ASK GABIN HOW SHE WANTS COUNT HANDED OVER
+  // console.log("count: " + count)
+  window.location = '/question/' + order + '/order'
+}
+
 function login() {
   console.log("entered function 1")
   var data = {
@@ -44,15 +55,42 @@ function submitUser() {
     method: 'POST',
     body: JSON.stringify(data)
   }).then(submitSuccess)
-  .then(window.location = '/welcome')
+  .then(window.location = '/') //was /welcome before
   .catch(submitError)
 }
 
-function createQuestion() {
-  console.log(form.prompt.value)
-  var data = {}
+
+function makeQuestion() {
+  var data = {
+    prompt: '',
+    answers: []
+  }
+
   if (form.prompt.value) data.prompt = form.prompt.value
-  if (form.)
+
+  var k = 0
+  var p = 0
+
+  while (form.choice[k].value) {
+
+    var entry = {
+        answer: '',
+        association: []
+    }
+    
+    entry.answer = form.choice[k].value
+
+    while (p < (5*(k+1))) {
+      if (form.faculty[p].checked) {
+        entry.association.push(form.faculty[p].value)
+      }
+      p++
+    }
+    data.answers.push(entry)
+    k++
+  }
+
+  console.log(data)
 
   fetch('/makeQuestion', {
     headers: {
@@ -74,8 +112,8 @@ function createQuestion() {
   }).catch(function(err) {
     console.error(err)
   })
-
 }
+
 
 /*=============================================
 =            Form Submit Callbacks            =

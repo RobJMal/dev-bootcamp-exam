@@ -5,30 +5,5 @@ block content
     h1 The quiz (intro page) should appear on index.pug 
     h2 We'll take out this register form later...
     h3 After clicking 'Get Started!' on the intro page, you should be redirected to each question. After the final one, you should be redirected to grade.pug. 
-
-    #js-error-message.error-message
-    form          
-        .form-box(style='text-align:center')
-            h2 Register
-            .fb-item
-                span Email
-                br
-                input(type='email' name='email' placeholder='example@gmail.com') 
-            .fb-item
-                span Password
-                br
-                input(type='password' name='password' placeholder='******')
-            .fb-item
-                span Confirm Password
-                br
-                input(type='password' name='confirm' placeholder='******') 
-            button#submit(type='button' onclick='submitUser()') Register
-
-    .modal#js-success
-        .modal-content
-            h2 Thank you for registering!
-
-
-
-
-
+    br
+    button#startQuiz(type='button' onclick='startQuiz()') Start Quiz!

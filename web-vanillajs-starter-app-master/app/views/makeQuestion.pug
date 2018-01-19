@@ -1,0 +1,93 @@
+extends template
+
+block content
+    form          
+        .form-box(style='text-align: center')
+            h2 Make Question
+            .fb-item
+                span Prompt
+                br
+                input(type='prompt' name='prompt' placeholder='Prompt') 
+            
+                h3 Answer Choices
+
+                .fb-item-child
+                    span Choice 1
+                    br
+                    input(type='choice' name='choice' placeholder='option')
+                    br
+                    input(type='checkbox' name='faculty' value='NP')
+                    span NP
+                    input(type='checkbox' name='faculty' value='EZ')
+                    span EZ
+                    input(type='checkbox' name='faculty' value='BV') 
+                    span BV
+                    input(type='checkbox' name='faculty' value='AR') 
+                    span AR
+                    input(type='checkbox' name='faculty' value='HO') 
+                    span HO
+                .fb-item-child
+                    br
+                    span Choice 2
+                    br
+                    input(type='choice' name='choice' placeholder='option')
+                    br
+                    input(type='checkbox' name='faculty' value='NP')
+                    span NP
+                    input(type='checkbox' name='faculty' value='EZ')
+                    span EZ
+                    input(type='checkbox' name='faculty' value='BV') 
+                    span BV
+                    input(type='checkbox' name='faculty' value='AR') 
+                    span AR
+                    input(type='checkbox' name='faculty' value='HO') 
+                    span HO
+                .fb-item-child
+                    br
+                    span Choice 3
+                    br
+                    input(type='choice' name='choice' placeholder='option')
+                    br
+                    input(type='checkbox' name='faculty' value='NP')
+                    span NP
+                    input(type='checkbox' name='faculty' value='EZ')
+                    span EZ
+                    input(type='checkbox' name='faculty' value='BV') 
+                    span BV
+                    input(type='checkbox' name='faculty' value='AR') 
+                    span AR
+                    input(type='checkbox' name='faculty' value='HO') 
+                    span HO
+                .fb-item-child
+                    br
+                    span Choice 4
+                    br
+                    input(type='choice' name='choice' placeholder='option')
+                    br
+                    input(type='checkbox' name='faculty' value='NP')
+                    span NP
+                    input(type='checkbox' name='faculty' value='EZ')
+                    span EZ
+                    input(type='checkbox' name='faculty' value='BV') 
+                    span BV
+                    input(type='checkbox' name='faculty' value='AR') 
+                    span AR
+                    input(type='checkbox' name='faculty' value='HO') 
+                    span HO
+                .fb-item-child
+                    br
+                    span Choice 5
+                    br
+                    input(type='choice' name='choice' placeholder='option')
+                    br
+                    input(type='checkbox' name='faculty' value='NP')
+                    span NP
+                    input(type='checkbox' name='faculty' value='EZ')
+                    span EZ
+                    input(type='checkbox' name='faculty' value='BV') 
+                    span BV
+                    input(type='checkbox' name='faculty' value='AR') 
+                    span AR
+                    input(type='checkbox' name='faculty' value='HO') 
+                    span HO
+            button#submit(type='button' onclick='makeQuestion()') Create!
