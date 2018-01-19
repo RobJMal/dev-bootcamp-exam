@@ -162,7 +162,10 @@ function displayError(message) {
 function submitResultsToEmail(){
   var resultAndEmail = {}
 
-  if (form.result.value) resultAndEmail.result = form.result.value
+  // document.getElementById('result').innerHTML
+
+  // if (form.result.value) resultAndEmail.result = form.result.value
+  if (document.getElementById('result').innerHTML) resultAndEmail.result = document.getElementById('result').innerHTML
   if (form.email.value) resultAndEmail.email = form.email.value 
 
   console.log(resultAndEmail)
@@ -187,7 +190,7 @@ function submitResultsToEmail(){
 function submitResultsToText() {
   var resultsAndPhoneInfo = {}
 
-  if (form.result.value) resultsAndPhoneInfo.result = form.result.value 
+  if (document.getElementById('result').innerHTML) resultsAndPhoneInfo.result = document.getElementById('result').innerHTML
   if (form.phoneNumber.value) resultsAndPhoneInfo.phoneNumber = form.phoneNumber.value
   if (form.phoneProvider.value) resultsAndPhoneInfo.phoneProvider = form.phoneProvider.value
 

@@ -3,22 +3,21 @@ extends template
 block content 
 	h1 This place displays the result 
 
-	h2#result Luna
+	h2#result Result: DEV Winter bootcamp 2018
 
 	form 
-
-		span Result
-		br
-		input(type='text' name='result' placeholder='Results')
-
-		br
 
 		//- Sends results via email 
 		span Email
 		br
 		input(type='text' name='email' placeholder='Email')
 
+		br
+
 		button#submit(type='button' onclick='submitResultsToEmail()') Submit
+
+		br
+		br
 
 		//- For sending results via text 
 		span Phone Number
@@ -29,15 +28,16 @@ block content
 
 		span Phone Provider
 		br
-		input(type='text' name='phoneProvider' placeholder='Phone Provider')
+		select#phoneProvider
+			option(value='att') AT&T
+			option(value='verizon') Verizon
+			option(value='t-mobile') T-Mobile
+			option(value='sprint') Sprint
+			option(value='boost') Boost
+
+		br
 
 		button#submit(type='button' onclick='submitResultsToText()') Submit
-
-	//- Button for sending results via email 
-
-
-	//- Button for sening results via text 
-
 
 	//- Buttons for sharing on social media 
 	#fb-root
