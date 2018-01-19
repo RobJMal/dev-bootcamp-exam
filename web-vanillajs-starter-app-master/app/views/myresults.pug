@@ -4,38 +4,41 @@ block content
 	h1#result APOLOGIES, YOU ARE ... #{spirit}!
 
 	form 
+		.form-box
+			h2 Email yourself your Results! 
+				.fb-item-results
+				br 
+				span Email
+				br
+				input(type='text' name='email' placeholder='Email')
 
-		span Result
-		br
-		input(type='text' name='result' placeholder='Results')
+				br
 
-		br
+				button#submit(type='button' onclick='submitResultsToEmail()') Send Email! 
 
-		//- Sends results via email 
-		span Email
-		br
-		input(type='text' name='email' placeholder='Email')
+				br
+				br
 
-		button#submit(type='button' onclick='submitResultsToEmail()') Submit
+			h2 Text yourself your Results! 
+				br
+				.fb-item-results 
+				span Phone Number
+				br 
+				input(type='phone' name='phoneNumber' placeholder='Phone Number')
 
-		//- For sending results via text 
-		span Phone Number
-		br 
-		input(type='phone' name='phoneNumber' placeholder='Phone Number')
+				.fb-item-results  
+				span Phone Provider
+				br
+				select#phoneProvider
+					option(value='att') AT&T
+					option(value='verizon') Verizon
+					option(value='t-mobile') T-Mobile
+					option(value='sprint') Sprint
+					option(value='boost') Boost
 
-		br
+				br
 
-		span Phone Provider
-		br
-		input(type='text' name='phoneProvider' placeholder='Phone Provider')
-
-		button#submit(type='button' onclick='submitResultsToText()') Submit
-
-	//- Button for sending results via email 
-
-
-	//- Button for sening results via text 
-
+				button#submit(type='button' onclick='submitResultsToText()') Send Text!
 
 	//- Buttons for sharing on social media 
 	#fb-root

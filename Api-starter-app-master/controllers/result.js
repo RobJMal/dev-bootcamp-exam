@@ -45,10 +45,10 @@ exports.getBreakDown = (req, res, next) => {
             braedon: {$sum: {$cond: ["$braedon", 1, 0]}},
             ethan: {$sum: {$cond: ["$ethan", 1, 0]}},
             humphri: {$sum: {$cond: ["$humphri", 1, 0]}},
-            noah: {$sum: {$cond: ["$noah", 1, 0]}},
-            total: {$sum: 1}
+            noah: {$sum: {$cond: ["$noah", 1, 0]}}
+            // total: {$sum: 1}
         }
     },
     {$project: {_id:0}}
-  ]).then(results => res.json(results)).catch(next);
+  ]).then(results => res.json(results[0])).catch(next);
 };
