@@ -6,11 +6,12 @@ block content
         script(src='/js/Chart.js')
       body
         canvas#canvas1(width='400', height='400')
-        |   
+        canvas#canvas2(width='400', height='400')
+
         script.
-            var chrt = document.getElementById("canvas1").getContext("2d");
+            var chrt1 = document.getElementById("canvas1").getContext("2d");
             var data = {
-               labels: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
+               labels: ["Choice 1", "Choice 2", "Choice 3", "Choice 4", "Chart 5"],
                datasets: [{
                   label: null,
                   backgroundColor: [
@@ -35,16 +36,12 @@ block content
                     text: "Question 1"
                 }
             };
-            var myFirstChart = new Chart(chrt, {
+            var questionChart = new Chart(chrt1, {
                type: 'bar',
                data: data,
                options: options
             });
-            
-        canvas#canvas2(width='400', height='400')
-        |     
-        script.
-            var chrt = document.getElementById("canvas2").getContext("2d");
+            var chrt2 = document.getElementById("canvas2").getContext("2d");
             var data = {
                labels: ["Akshitha", "Braedon", "Ethan", "Humphri", "Noah"],
                datasets: [{
@@ -71,7 +68,7 @@ block content
                     text: "Total Result"
                 }
             };
-            var myFirstChart = new Chart(chrt, {
+            var totalChart = new Chart(chrt2, {
                type: 'pie',
                data: data,
                options: options
