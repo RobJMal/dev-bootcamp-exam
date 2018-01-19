@@ -7,12 +7,6 @@ router.get('/', (req, res, next) => {
     return res.render('index');
 });
 
-
-router.get('/welcome', (req, res, next) => {
-	return res.render('welcome')
-})
-
-
 router.get('/makeQuestion', (req, res, next) => {
 	return res.render('makeQuestion')
 })
@@ -77,6 +71,13 @@ router.get('/myresults', (req, res, next) => {
   return res.render('myresults')
 })
 
+// Loads my result page with your spirit 
+router.get('/myresults/:spirit/spirit', (req, res, next) => {
+  return res.render('myresults', {
+    spirit: req.params.spirit
+  })
+})
+
 // Sends result via email
 router.post('/myresults/email', (req, res, next) => {
   console.log(req.body)
@@ -99,6 +100,14 @@ router.post('/myresults/phone', (req, res, next) => {
 router.post('/login', (req, res, next) => {
   request.post({
     url: config.apiUrl + '/auth/login',
+    form: req.body
+  }).pipe(res)
+})
+
+
+router.post('/answer', (req, res, next) => {
+  request.post({
+    url: config.apiUrl + '/answer',
     form: req.body
   }).pipe(res)
 })

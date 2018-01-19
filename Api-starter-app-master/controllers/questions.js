@@ -1,24 +1,27 @@
 const Question = require('../models/schemas/question');
 
 const genId = (function() {
-	let idTracker = 1;
+	let idTracker = 0;
     return () => idTracker++;
 })()
 
 exports.makeQuestion = (req, res, next) => {
-	console.log('HERE')
-	console.log(req)
+	// console.log('HERE')
+	// console.log(req)
 	if (!req.body.prompt) {
 		return res.status(400).send('Must provide question prompt')
 	}
-	if (!req.body.answers.answer) {
+	if (!req.body.answers) {
 		return res.status(400).send('Must provide question answers')
+	}
+	if (!req.body.order) {
+		return res.status(400).send('Must provide order')
 	}
 
 	const questionData = {
-		order: genId(),
+		order: req.body.order,
 		prompt: req.body.prompt,
-		answers: [{ answer: req.body.answers.answer, association: [] }]
+		answers: req.body.answers
 	}
 
 	console.log(JSON.stringify(questionData))
@@ -57,7 +60,9 @@ exports.updateQuestion = (req, res, next) => {
 };
 
 exports.deleteQuestion = (req, res, next) => {
-    Question.findByIdAndRemove(req.body.id)
-    .then(question => res.sendStatus(200))
-    .catch(next);
+    Question.findByIdAndRemove(req.params.questionId, (err, question) => {
+    	if (err) return next(err)
+    	if (!question) return res.status(404).send('Could not find question ' + req.params.questionId)
+    	return res.sendStatus(200);
+    })
 }

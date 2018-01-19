@@ -1,24 +1,18 @@
 extends template
 
 block content
-<<<<<<< HEAD
-	h2 Questions Bank
-
-	h3 Question Listing
-
-	P #{question}
-=======
-    h2 Question #{order}
-    p #{prompt}
+    h2#qpug1 Question #{order}
+    p#qpug2 #{prompt}
 
     form
         .form-box
             - var count = 0
             each part in answers 
-                p #{part.answer} 
-                button#changethis(type ='button' onclick = 'nextQuestion(' +order +', ' + count + ')') ^ Yeah I feel this
+                - var ak = part.association[0]
+                - var bv = part.association[1]
+                - var ez = part.association[2]
+                - var ho = part.association[3]
+                - var np = part.association[4]
+                p#qpug3 #{part.answer} 
+                button#qpug4(type ='button' onclick = 'nextQuestion(' + order + ', ' + count + ', ' + ak + ', ' + bv + ', ' + ez + ', ' + ho + ', ' + np + ')') ^ Yeah I feel this
                 - count++
-
-    br
-    button#startQuiz(type='button' onclick='startQuiz()') Start Quiz!
->>>>>>> 6e750edc5460d4599cdd57c17757fcc4bfb1e30d

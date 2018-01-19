@@ -36,9 +36,11 @@ router.route('/auth/login')
   .post(auth.loginUser);
 
 router.route('/question')
-  .post(questions.makeQuestion)
+  .post(questions.makeQuestion) 
   .get(questions.getAllQuestions)
 
+router.route('/question/:questionId/delete')
+  .delete(questions.deleteQuestion)
 
 /*
 * Send Routes

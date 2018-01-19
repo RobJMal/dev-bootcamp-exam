@@ -1,18 +1,77 @@
 const form = document.forms[0]
 
 function startQuiz() {
+  localStorage.ak = "0"
+  localStorage.bv = "0"
+  localStorage.ez = "0"
+  localStorage.ho = "0"
+  localStorage.np = "0"
   window.location = '/question/0/order'
 }
 
-function nextQuestion(order, count) {
+function nextQuestion(order, count, ak, bv, ez, ho, np) {
+  if (ak === 1) {localStorage.ak++}
+  if (bv === 1) {localStorage.bv++}
+  if (ez == 1) {localStorage.ez++}
+  if (ho === 1) {localStorage.ho++}
+  if (np === 1) {localStorage.np++}
+
+  console.log("localstorage: " + localStorage.ak + ", " + localStorage.bv + ", " + localStorage.ez + ", " + localStorage.ho + ", " + localStorage.np)
+
+  //send data to Gabin's all results
+  var data = {
+    id: order,
+    choice: count
+  }
+  fetch('/answer', {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify(data)
+  }).then(function(res) {
+    if (!res.ok) { alert('ERROR') }
+    // console.log("entered function 1")
+    res.json()
+    .then(function(data) {
+      // alert(JSON.stringify(data))
+      localStorage.token = data.token
+      // window.location = '/makeQuestion'
+    })
+  })
+  
+  //redirect to next question
   order += 1
-  //ASK GABIN HOW SHE WANTS COUNT HANDED OVER
-  // console.log("count: " + count)
-  window.location = '/question/' + order + '/order'
+  // not the best implementation...
+  if (order < 12) {
+    window.location = '/question/' + order + '/order'
+  }
+  // TO TRANSITION TO MY RESULTS PAGE
+  else {
+    var largestNum = localStorage.ak
+    var largestSpirit = "AKSHITHA"
+    if (localStorage.bv > largestNum) {
+      largestNum = localStorage.bv
+      largestSpirit = "BRAEDON"
+    }
+    if (localStorage.ez > largestNum) {
+      largestNum = localStorage.ez
+      largestSpirit = "ETHAN"
+    }
+    if (localStorage.ho > largestNum) {
+      largestNum = localStorage.ho
+      largestSpirit = "HUMPHRI"
+    }
+    if (localStorage.np > largestNum) {
+      largestNum = localStorage.np
+      largestSpirit = "NOAH"
+    }
+    window.location = '/myresults/' + largestSpirit + '/spirit'
+  }
 }
 
 function login() {
-  console.log("entered function 1")
+  // console.log("entered function 1")
   var data = {
     email: form.email.value,
     password: form.password.value
@@ -25,12 +84,12 @@ function login() {
     body: JSON.stringify(data)
   }).then(function(res) {
     if (!res.ok) { alert('ERROR') }
-    console.log("entered function 1")
+    // console.log("entered function 1")
     res.json()
     .then(function(data) {
-      alert(JSON.stringify(data))
+      // alert(JSON.stringify(data))
       localStorage.token = data.token
-      window.location = '/'
+      window.location = '/makeQuestion'
     })
   })
 }
@@ -63,10 +122,12 @@ function submitUser() {
 function makeQuestion() {
   var data = {
     prompt: '',
+    order: -1, 
     answers: []
   }
 
   if (form.prompt.value) data.prompt = form.prompt.value
+  if (form.order.value) data.order = form.order.value
 
   var k = 0
   var p = 0
@@ -90,7 +151,7 @@ function makeQuestion() {
     k++
   }
 
-  console.log(data)
+  // console.log(data)
 
   fetch('/makeQuestion', {
     headers: {
