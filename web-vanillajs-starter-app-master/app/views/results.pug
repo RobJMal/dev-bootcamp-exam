@@ -1,5 +1,78 @@
 extends template
 
-block content
-    h1 results.pug
-    h3 This should display everyone's results, like percentage breakdown (30% got Braedon, etc.). Maybe in like a pie chart.
+block content 
+    html
+      head
+        script(src='/js/Chart.js')
+      body
+        canvas#canvas1(width='400', height='400')
+        |   
+        script.
+            var chrt = document.getElementById("canvas1").getContext("2d");
+            var data = {
+               labels: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
+               datasets: [{
+                  label: null,
+                  backgroundColor: [
+                    "rgba(252, 209, 214, 1)",
+                    "rgba(224, 60, 60, 1)",
+                    "rgba(160, 64, 78, 1)",
+                    "rgba(142, 14, 24, 1)",
+                    "rgba(188, 94, 102, 1)"
+                  ],
+                  borderColor: "rgba(220,220,220,0.8)",
+                  hoverBackgroundColor: "rgba(73, 46, 46, 1)",
+                  hoverBorderColor: "rgba(220,220,220,1)",
+                  data: [65, 59, 80, 81, 56]
+                }],
+            };
+            var options = {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: "Question 1"
+                }
+            };
+            var myFirstChart = new Chart(chrt, {
+               type: 'bar',
+               data: data,
+               options: options
+            });
+            
+        canvas#canvas2(width='400', height='400')
+        |     
+        script.
+            var chrt = document.getElementById("canvas2").getContext("2d");
+            var data = {
+               labels: ["Akshitha", "Braedon", "Ethan", "Humphri", "Noah"],
+               datasets: [{
+                  label: 'Number of Results',
+                  backgroundColor: [
+                    "rgba(252, 209, 214, 1)",
+                    "rgba(224, 60, 60, 1)",
+                    "rgba(160, 64, 78, 1)",
+                    "rgba(142, 14, 24, 1)",
+                    "rgba(188, 94, 102, 1)"
+                  ],
+                  borderColor: "rgba(220,220,220,0.8)",
+                  hoverBackgroundColor: "rgba(73, 46, 46, 1)",
+                  hoverBorderColor: "rgba(220,220,220,1)",
+                  data: [65, 59, 80, 81, 56]
+                }],
+            };
+            var options = {
+                legend: {
+                    position: "bottom"
+                },
+                title: {
+                    display: true,
+                    text: "Total Result"
+                }
+            };
+            var myFirstChart = new Chart(chrt, {
+               type: 'pie',
+               data: data,
+               options: options
+            });
