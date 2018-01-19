@@ -7,12 +7,6 @@ router.get('/', (req, res, next) => {
     return res.render('index');
 });
 
-
-router.get('/welcome', (req, res, next) => {
-	return res.render('welcome')
-})
-
-
 router.get('/makeQuestion', (req, res, next) => {
 	return res.render('makeQuestion')
 })
