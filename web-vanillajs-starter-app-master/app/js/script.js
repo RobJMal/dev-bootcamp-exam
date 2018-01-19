@@ -48,11 +48,13 @@ function submitUser() {
   .catch(submitError)
 }
 
-function createQuestion() {
+function makeQuestion() {
+  console.log("hi")
   console.log(form.prompt.value)
+  console.log(form.answer.value)
   var data = {}
   if (form.prompt.value) data.prompt = form.prompt.value
-  if (form.)
+  if (form.answer.value) data.answer = form.answer.value
 
   fetch('/makeQuestion', {
     headers: {
@@ -75,6 +77,10 @@ function createQuestion() {
     console.error(err)
   })
 
+}
+
+function keepScore() {
+  
 }
 
 /*=============================================

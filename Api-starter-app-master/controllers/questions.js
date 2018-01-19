@@ -1,6 +1,6 @@
 const Question = require('../models/schemas/question');
 
-exports.createQuestion = (req, res, next) => {
+exports.makeQuestion = (req, res, next) => {
 	if (!req.body.prompt) {
 		return res.status(400).send('Must provide question prompt')
 	}
@@ -9,9 +9,11 @@ exports.createQuestion = (req, res, next) => {
 	}
 
 	const questionData = {
-		prompt: req.body.prompt
+		prompt: req.body.prompt,
+		answers: req.body.answers
 	}
 
+	console.log(JSON.stringify(questionData))
 	const newQuestion = new Question(questionData)
 	newQuestion.save((err) => {
 		if (err) return next(err)

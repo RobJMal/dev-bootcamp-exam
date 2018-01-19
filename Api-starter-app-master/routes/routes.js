@@ -5,12 +5,10 @@ const router = express.Router();
 
 const auth = require('../controllers/auth')
 const users = require('../controllers/users')
-<<<<<<< HEAD
-const questions = require('../controllers/questions')
-=======
-const send = require('../controllers/send')
->>>>>>> 47fc74eed8724809516857b29be73ab016b6d61a
 
+const questions = require('../controllers/questions')
+
+const send = require('../controllers/send')
 
 /*
 * User Routes
@@ -27,11 +25,10 @@ router.route('/user')
 router.route('/auth/login')
   .post(auth.loginUser);
 
-<<<<<<< HEAD
 router.route('/question')
-  .post(questions.createQuestion)
+  .post(questions.makeQuestion)
   .get(questions.getAllQuestions)
-=======
+
 
 /*
 * Send Routes
@@ -44,7 +41,6 @@ router.route('/results/sendText')
 router.route('/results/sendEmail')
 	.post(send.sendUserEmail)
 
->>>>>>> 47fc74eed8724809516857b29be73ab016b6d61a
 
 // expose routes through router object
 module.exports = router;
