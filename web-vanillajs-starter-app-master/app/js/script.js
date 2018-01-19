@@ -1,5 +1,16 @@
 const form = document.forms[0]
 
+function startQuiz() {
+  window.location = '/question/0/order'
+}
+
+function nextQuestion(order, count) {
+  order += 1
+  //ASK GABIN HOW SHE WANTS COUNT HANDED OVER
+  // console.log("count: " + count)
+  window.location = '/question/' + order + '/order'
+}
+
 function login() {
   console.log("entered function 1")
   var data = {
@@ -44,10 +55,11 @@ function submitUser() {
     method: 'POST',
     body: JSON.stringify(data)
   }).then(submitSuccess)
-  .then(window.location = '/welcome')
+  .then(window.location = '/') //was /welcome before
   .catch(submitError)
 }
 
+<<<<<<< HEAD
 function makeQuestion() {
   console.log("hi")
   console.log(form.prompt.value)
@@ -55,29 +67,37 @@ function makeQuestion() {
   var data = {}
   if (form.prompt.value) data.prompt = form.prompt.value
   if (form.answer.value) data.answer = form.answer.value
+=======
+////Joon made this?
+// function createQuestion() {
+//   console.log(form.prompt.value)
+//   var data = {}
+//   if (form.prompt.value) data.prompt = form.prompt.value
+//   if (form.)
+>>>>>>> 6e750edc5460d4599cdd57c17757fcc4bfb1e30d
 
-  fetch('/makeQuestion', {
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    method: 'POST',
-    body: JSON.stringify(data)
-  }).then(function(res) {
-    if (!res.ok) {
-      res.text()
-      .then(function(message) {
-        alert(message)
-      })
-    }
-    res.json()
-    .then(function(user) {
-      window.location = '/question'
-    })
-  }).catch(function(err) {
-    console.error(err)
-  })
+//   fetch('/makeQuestion', {
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     method: 'POST',
+//     body: JSON.stringify(data)
+//   }).then(function(res) {
+//     if (!res.ok) {
+//       res.text()
+//       .then(function(message) {
+//         alert(message)
+//       })
+//     }
+//     res.json()
+//     .then(function(user) {
+//       window.location = '/question'
+//     })
+//   }).catch(function(err) {
+//     console.error(err)
+//   })
 
-}
+// }
 
 function keepScore() {
   
@@ -122,3 +142,60 @@ function displayError(message) {
     errorDiv.innerHTML = message;
     errorDiv.style.visibility = 'visible';
 }
+
+
+/*=============================================
+=      Form Submit Results (text, email)     =
+=============================================*/
+function submitResultsToEmail(){
+  var resultAndEmail = {}
+
+  if (form.result.value) resultAndEmail.result = form.result.value
+  if (form.email.value) resultAndEmail.email = form.email.value 
+
+  console.log(resultAndEmail)
+
+  fetch('/myresults/email', {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify(resultAndEmail)
+  }).then(function(res) {
+    res.json()
+    .then(function(user) {
+      alert(JSON.stringify(user))
+    })
+  }).catch(function(argument) {
+    console.error(err)
+  })
+}
+
+
+function submitResultsToText() {
+  var resultsAndPhoneInfo = {}
+
+  if (form.result.value) resultsAndPhoneInfo.result = form.result.value 
+  if (form.phoneNumber.value) resultsAndPhoneInfo.phoneNumber = form.phoneNumber.value
+  if (form.phoneProvider.value) resultsAndPhoneInfo.phoneProvider = form.phoneProvider.value
+
+  console.log(resultsAndPhoneInfo)
+
+  fetch('/myresults/phone', {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify(resultsAndPhoneInfo)
+  }).then(function(res) {
+    res.json()
+    .then(function(user) {
+      alert(JSON.stringify(user))
+    })
+  }).catch(function(argument) {
+    console.error(err)
+  })
+}
+
+
+// document.getElementById('result').innerHTML

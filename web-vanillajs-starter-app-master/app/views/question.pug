@@ -1,8 +1,24 @@
 extends template
 
 block content
+<<<<<<< HEAD
 	h2 Questions Bank
 
 	h3 Question Listing
 
 	P #{question}
+=======
+    h2 Question #{order}
+    p #{prompt}
+
+    form
+        .form-box
+            - var count = 0
+            each part in answers 
+                p #{part.answer} 
+                button#changethis(type ='button' onclick = 'nextQuestion(' +order +', ' + count + ')') ^ Yeah I feel this
+                - count++
+
+    br
+    button#startQuiz(type='button' onclick='startQuiz()') Start Quiz!
+>>>>>>> 6e750edc5460d4599cdd57c17757fcc4bfb1e30d
