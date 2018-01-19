@@ -59,49 +59,61 @@ function submitUser() {
   .catch(submitError)
 }
 
-<<<<<<< HEAD
+
 function makeQuestion() {
-  console.log("hi")
-  console.log(form.prompt.value)
-  console.log(form.answer.value)
-  var data = {}
+  var data = {
+    prompt: '',
+    answers: []
+  }
+
   if (form.prompt.value) data.prompt = form.prompt.value
-  if (form.answer.value) data.answer = form.answer.value
-=======
-////Joon made this?
-// function createQuestion() {
-//   console.log(form.prompt.value)
-//   var data = {}
-//   if (form.prompt.value) data.prompt = form.prompt.value
-//   if (form.)
->>>>>>> 6e750edc5460d4599cdd57c17757fcc4bfb1e30d
 
-//   fetch('/makeQuestion', {
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     method: 'POST',
-//     body: JSON.stringify(data)
-//   }).then(function(res) {
-//     if (!res.ok) {
-//       res.text()
-//       .then(function(message) {
-//         alert(message)
-//       })
-//     }
-//     res.json()
-//     .then(function(user) {
-//       window.location = '/question'
-//     })
-//   }).catch(function(err) {
-//     console.error(err)
-//   })
+  var k = 0
+  var p = 0
 
-// }
+  while (form.choice[k].value) {
 
-function keepScore() {
-  
+    var entry = {
+        answer: '',
+        association: []
+    }
+    
+    entry.answer = form.choice[k].value
+
+    while (p < (5*(k+1))) {
+      if (form.faculty[p].checked) {
+        entry.association.push(form.faculty[p].value)
+      }
+      p++
+    }
+    data.answers.push(entry)
+    k++
+  }
+
+  console.log(data)
+
+  fetch('/makeQuestion', {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify(data)
+  }).then(function(res) {
+    if (!res.ok) {
+      res.text()
+      .then(function(message) {
+        alert(message)
+      })
+    }
+    res.json()
+    .then(function(user) {
+      window.location = '/question'
+    })
+  }).catch(function(err) {
+    console.error(err)
+  })
 }
+
 
 /*=============================================
 =            Form Submit Callbacks            =

@@ -7,13 +7,12 @@ router.get('/', (req, res, next) => {
     return res.render('index');
 });
 
-<<<<<<< HEAD
+
 router.get('/welcome', (req, res, next) => {
 	return res.render('welcome')
 })
 
-=======
->>>>>>> 6e750edc5460d4599cdd57c17757fcc4bfb1e30d
+
 router.get('/makeQuestion', (req, res, next) => {
 	return res.render('makeQuestion')
 })
@@ -72,18 +71,6 @@ router.get('/login', (req, res, next) => {
     return res.render('login');
 });
 
-<<<<<<< HEAD
-//so this is unused now...
-
-router.post('/register', (req, res, next) => {
-=======
-////so this is unused now...
-// router.post('/register', (req, res, next) => {
-//   request.post({
-//       url: config.apiUrl + '/users',
-//       form: req.body
-//   }).pipe(res)
-// })
 
 // Loads my result page 
 router.get('/myresults', (req, res, next) => {
@@ -93,7 +80,7 @@ router.get('/myresults', (req, res, next) => {
 // Sends result via email
 router.post('/myresults/email', (req, res, next) => {
   console.log(req.body)
->>>>>>> 6e750edc5460d4599cdd57c17757fcc4bfb1e30d
+
   request.post({
     url: config.apiUrl + '/results/sendEmail',
     form: req.body

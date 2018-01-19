@@ -5,12 +5,7 @@ const router = express.Router();
 
 const auth = require('../controllers/auth')
 const users = require('../controllers/users')
-<<<<<<< HEAD
 
-const questions = require('../controllers/questions')
-
-const send = require('../controllers/send')
-=======
 const questions = require('../controllers/questions')
 const send = require('../controllers/send')
 const result = require('../controllers/result')
@@ -23,7 +18,7 @@ router.route('/question/:questionId/id')
   .get(questions.getQuestionById)
 router.route('/question/:order/order')
   .get(questions.getQuestionByOrder)
->>>>>>> 6e750edc5460d4599cdd57c17757fcc4bfb1e30d
+
 
 /*
 * User Routes
@@ -43,10 +38,7 @@ router.route('/auth/login')
 router.route('/question')
   .post(questions.makeQuestion)
   .get(questions.getAllQuestions)
-<<<<<<< HEAD
 
-=======
->>>>>>> 6e750edc5460d4599cdd57c17757fcc4bfb1e30d
 
 /*
 * Send Routes
@@ -59,8 +51,6 @@ router.route('/results/sendText')
 router.route('/results/sendEmail')
 	.post(send.sendUserEmail)
 
-<<<<<<< HEAD
-=======
 /*
 * Result Routes
 */
@@ -79,8 +69,6 @@ router.route('/answer')
 
 // router.route('/test')
 //   .get(answer.getAllAnswers)
-
->>>>>>> 6e750edc5460d4599cdd57c17757fcc4bfb1e30d
 
 // expose routes through router object
 module.exports = router;

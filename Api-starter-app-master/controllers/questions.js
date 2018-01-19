@@ -1,28 +1,24 @@
 const Question = require('../models/schemas/question');
 
-<<<<<<< HEAD
+const genId = (function() {
+	let idTracker = 1;
+    return () => idTracker++;
+})()
+
 exports.makeQuestion = (req, res, next) => {
-=======
-exports.createQuestion = (req, res, next) => {
 	console.log('HERE')
-	if (req.body.order === undefined) {
-		return res.status(400).send('Must provide order')
-	}
->>>>>>> 6e750edc5460d4599cdd57c17757fcc4bfb1e30d
+	console.log(req)
 	if (!req.body.prompt) {
 		return res.status(400).send('Must provide question prompt')
 	}
-	if (!req.body.answers) {
+	if (!req.body.answers.answer) {
 		return res.status(400).send('Must provide question answers')
 	}
 
 	const questionData = {
-<<<<<<< HEAD
-=======
-		order: req.body.order,
->>>>>>> 6e750edc5460d4599cdd57c17757fcc4bfb1e30d
+		order: genId(),
 		prompt: req.body.prompt,
-		answers: req.body.answers
+		answers: [{ answer: req.body.answers.answer, association: [] }]
 	}
 
 	console.log(JSON.stringify(questionData))
